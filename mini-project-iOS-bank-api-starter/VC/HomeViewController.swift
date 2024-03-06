@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
         setupUI()
         setupConstraints()
         
+        title = "Home"
         // Do any additional setup after loading the view.
     }
 
