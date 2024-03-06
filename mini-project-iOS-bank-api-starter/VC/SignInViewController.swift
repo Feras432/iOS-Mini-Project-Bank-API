@@ -48,7 +48,7 @@ class SignInViewController: FormViewController {
             row.title = "Submit"
             row.onCellSelection{ cell , row in
                 print("tapped")
-                //self.submitTapped()
+                
             }
         
         }
@@ -75,11 +75,13 @@ class SignInViewController: FormViewController {
         NetworkManager.shared.login(user: user){ success in
             
             DispatchQueue.main.async{
-                if success {
-                    print("success")
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    print("failed")
+                switch success {
+                    
+                case .success(let tokenResponse):
+                    print(tokenResponse.token)
+                    
+                case .failure(let error):
+                    print(error)
                 }
             }
         }
