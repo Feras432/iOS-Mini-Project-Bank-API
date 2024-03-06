@@ -13,6 +13,7 @@ class SignInViewController: FormViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupForm()
     }
     
     func setupForm(){
@@ -21,19 +22,6 @@ class SignInViewController: FormViewController {
             row.title = "Username"
             row.placeholder = "Enter the username"
             row.tag = "username"
-            row.add(rule: RuleRequired())
-            row.validationOptions = .validatesOnChange
-            
-            row.cellUpdate{ cell, row in
-                if !row.isValid{
-                    cell.titleLabel?.textColor = .red
-                }
-            }
-        }
-        <<< TextRow() { row in
-            row.title = "Email"
-            row.placeholder = "Enter the email"
-            row.tag = "email"
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesOnChange
             
@@ -56,6 +44,19 @@ class SignInViewController: FormViewController {
                 }
             }
         }
+        <<< ButtonRow(){ row in
+            row.title = "Submit"
+            row.onCellSelection{ cell , row in
+                print("tapped")
+                //self.submitTapped()
+            }
+        
+        }
         
     }
+    
+    @objc func submitTapped(){
+        
+    }
+    
 }

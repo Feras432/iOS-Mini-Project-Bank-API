@@ -34,6 +34,29 @@ class NetworkManager {
             }
         }
     }
+    
+    func login(user: User, completion: @escaping (Result<TokenResponse, Error>) -> Void) {
+       let url = baseUrl + "login"
+       AF.request(url, method: .get, parameters: user, encoder: JSONParameterEncoder.default).responseDecodable(of: TokenResponse.self) { response in
+           switch response.result {
+           case .success(let value):
+               completion(.success(value))
+           case .failure(let afError):
+               completion(.failure(afError as Error))
+           }
+       }
+   }
+    func withdraw(token: String, amountChange: AmountChange, completion: @escaping (Result<Void, Error>) -> Void) {
+       let url = baseUrl + "withdraw"
+       let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+       AF.request(url, method: .put, parameters: amountChange, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+           if let error = response.error {
+               completion(.failure(error))
+           } else {
+               completion(.success(()))
+           }
+       }
+   }
 
     
     //MARK: OTHER Networking Functions

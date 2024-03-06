@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         view.addSubview(signupButton)
         view.addSubview(signinButton)
         
@@ -38,14 +38,16 @@ class HomeViewController: UIViewController {
     }
     func setupConstraints(){
         signinButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalTo(200)
+            make.center.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.width.equalTo(50)
             make.height.equalTo(50)
         }
         
         signupButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalTo(200)
+            make.top.equalTo(signinButton.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            make.width.equalTo(50)
             make.height.equalTo(50)
         }
     }
