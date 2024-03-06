@@ -26,6 +26,8 @@
 		89215D082B98405B00DACA92 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89215D072B98405B00DACA92 /* SignInViewController.swift */; };
 		89215D0A2B98406E00DACA92 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89215D092B98406E00DACA92 /* SignUpViewController.swift */; };
 		89215D0C2B9841CB00DACA92 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89215D0B2B9841CB00DACA92 /* ProfileViewController.swift */; };
+		C3BEFEB12B985EC400D89EB7 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEFEB02B985EC400D89EB7 /* DepositViewController.swift */; };
+		C3BEFEB32B985ED600D89EB7 /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEFEB22B985ED600D89EB7 /* WithdrawViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		89215D072B98405B00DACA92 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		89215D092B98406E00DACA92 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		89215D0B2B9841CB00DACA92 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C3BEFEB02B985EC400D89EB7 /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
+		C3BEFEB22B985ED600D89EB7 /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 				89215D072B98405B00DACA92 /* SignInViewController.swift */,
 				89215D092B98406E00DACA92 /* SignUpViewController.swift */,
 				89215D0B2B9841CB00DACA92 /* ProfileViewController.swift */,
+				C3BEFEB02B985EC400D89EB7 /* DepositViewController.swift */,
+				C3BEFEB22B985ED600D89EB7 /* WithdrawViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -225,9 +231,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				05CF04C42B97A0AF00672FDF /* HomeViewController.swift in Sources */,
+				C3BEFEB12B985EC400D89EB7 /* DepositViewController.swift in Sources */,
 				05CF04D42B97A12600672FDF /* customView.swift in Sources */,
 				05CF04D82B97A15200672FDF /* NetworkManager.swift in Sources */,
 				05CF04C02B97A0AF00672FDF /* AppDelegate.swift in Sources */,
+				C3BEFEB32B985ED600D89EB7 /* WithdrawViewController.swift in Sources */,
 				89215D0A2B98406E00DACA92 /* SignUpViewController.swift in Sources */,
 				05CF04E12B97A23C00672FDF /* User.swift in Sources */,
 				89215D0C2B9841CB00DACA92 /* ProfileViewController.swift in Sources */,
