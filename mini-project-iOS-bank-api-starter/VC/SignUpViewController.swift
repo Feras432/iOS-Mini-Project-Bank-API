@@ -17,7 +17,7 @@ class SignUpViewController: FormViewController {
     }
     
     func setupForm(){
-        form +++ Section("Sign In")
+        form +++ Section("Sign Up")
         <<< TextRow() { row in
             row.title = "Username"
             row.placeholder = "Enter the username"

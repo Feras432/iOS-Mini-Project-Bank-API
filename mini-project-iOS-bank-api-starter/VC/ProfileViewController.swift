@@ -27,15 +27,37 @@ class ProfileViewController: UIViewController {
         view.addSubview(amountLabelView)
         view.addSubview(depositButton)
         view.addSubview(withdrawalButton)
+        
+        title = "Profile"
+        setupUI()
+        setupConstraints()
+        
     }
     
     
     func setupUI(){
+        depositButton.setTitle("Deposit", for: .normal)
+        depositButton.backgroundColor = .green
+        depositButton.layer.cornerRadius = 10
         
+        
+        withdrawalButton.setTitle("Withdrawal", for: .normal)
+        withdrawalButton.backgroundColor = .red
+        withdrawalButton.layer.cornerRadius = 10
     }
     
     func setupConstraints(){
+        depositButton.snp.makeConstraints { make in
+            
+            make.width.equalTo(50)
+            make.height.equalTo(50)
+        }
         
+        withdrawalButton.snp.makeConstraints { make in
+            
+            make.width.equalTo(50)
+            make.height.equalTo(50)
+        }
     }
 
 }
