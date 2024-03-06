@@ -8,10 +8,10 @@
 import UIKit
 import Eureka
 class SignUpViewController: FormViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupForm()
     }
@@ -63,7 +63,7 @@ class SignUpViewController: FormViewController {
                 print("tapped")
                 //self.submitTapped()
             }
-        
+            
         }
         
     }
@@ -85,21 +85,23 @@ class SignUpViewController: FormViewController {
         
         let user = User(username: username, email: email, password: password)
         
-        NetworkManager.shared.signup(user: user,completion: ){ success in
+        NetworkManager.shared.signup(user: user){ success in
             
             DispatchQueue.main.async{
-                if success {
-                    print("success")
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    print("failed")
+                switch success {
+                    
+                case .success(let tokenResponse):
+                    print(tokenResponse.token)
+                    
+                case .failure(let error):
+                    print(error)
                 }
             }
         }
-    }
-    private func presentAlertWithTitle(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true, completion: nil)
+         func presentAlertWithTitle(title: String, message: String) {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true, completion: nil)
+        }
     }
 }
