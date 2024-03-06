@@ -10,10 +10,9 @@ import SnapKit
 
 class ProfileViewController: UIViewController {
 
-    var user : User?
+    var token : String?
     var amount : AmountChange?
-    
-    
+        
     let nameLabelView = UILabel()
     let amountLabelView = UILabel()
     let depositButton = UIButton()
@@ -22,6 +21,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
 
         view.addSubview(nameLabelView)
         view.addSubview(amountLabelView)
@@ -48,13 +48,15 @@ class ProfileViewController: UIViewController {
     
     func setupConstraints(){
         depositButton.snp.makeConstraints { make in
-            
+            make.centerX.equalTo(view.snp.centerX)
+            make.leading.equalToSuperview()
             make.width.equalTo(50)
             make.height.equalTo(50)
         }
         
         withdrawalButton.snp.makeConstraints { make in
-            
+            make.centerX.equalTo(view.snp.centerX)
+            make.trailing.equalToSuperview()
             make.width.equalTo(50)
             make.height.equalTo(50)
         }

@@ -35,9 +35,10 @@ class NetworkManager {
         }
     }
     
-    func login(user: User, completion: @escaping (Result<TokenResponse, Error>) -> Void) {
-       let url = baseUrl + "login"
-       AF.request(url, method: .get, parameters: user, encoder: JSONParameterEncoder.default).responseDecodable(of: TokenResponse.self) { response in
+    func signin(username: String,password: String, completion: @escaping (Result<TokenResponse, Error>) -> Void) {
+       let url = baseUrl + "signin"
+        let parameters : [String: String] = ["username": username,"password": password]
+       AF.request(url, method: .post, parameters: parameters, encoder: JSONParameterEncoder.default).responseDecodable(of: TokenResponse.self) { response in
            switch response.result {
            case .success(let value):
                completion(.success(value))
@@ -57,8 +58,20 @@ class NetworkManager {
            }
        }
    }
-
-    
+//    func fetchAccount(completion: @escaping ([User]?) -> Void){
+//        let url = baseUrl + "account"
+//        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+//        AF.request(url, method: .get, parameters: amountChange, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
+//               switch response.result{
+//               case .success(let token):
+//                   completion(token)
+//               case .failure(let error):
+//                   completion(nil)
+//                   print(error)
+//               }
+//           }
+//       }
+//    
     //MARK: OTHER Networking Functions
     
     

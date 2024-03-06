@@ -9,75 +9,79 @@ import UIKit
 import Eureka
 class SignUpViewController: FormViewController {
     
+    enum TagUser: String {
+        case username = "username"
+        case email = "email"
+        case password = "password"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
         setupForm()
     }
     
-    func setupForm(){
-        form +++ Section("Sign Up")
+    private func setupForm() {
+        form +++ Section("Signup Information")
         <<< TextRow() { row in
             row.title = "Username"
-            row.placeholder = "Enter the username"
-            row.tag = "username"
+            row.placeholder = "Enter username"
+            row.tag = TagUser.username.rawValue
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesOnChange
-            
-            row.cellUpdate{ cell, row in
-                if !row.isValid{
+            row.cellUpdate { cell, row in
+                if !row.isValid {
                     cell.titleLabel?.textColor = .red
                 }
             }
         }
         <<< EmailRow() { row in
             row.title = "Email"
-            row.placeholder = "Enter the email"
-            row.tag = "email"
+            row.placeholder = "Enter email"
+            row.tag = TagUser.email.rawValue
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesOnChange
-            
-            row.cellUpdate{ cell, row in
-                if !row.isValid{
+            row.cellUpdate { cell, row in
+                if !row.isValid {
                     cell.titleLabel?.textColor = .red
                 }
             }
         }
         <<< PasswordRow() { row in
             row.title = "Password"
-            row.placeholder = "Enter the password"
-            row.tag = "password"
+            row.placeholder = "Enter password"
+            row.tag = TagUser.password.rawValue
             row.add(rule: RuleRequired())
             row.validationOptions = .validatesOnChange
-            
-            row.cellUpdate{ cell, row in
-                if !row.isValid{
+            row.cellUpdate { cell, row in
+                if !row.isValid {
                     cell.titleLabel?.textColor = .red
                 }
             }
         }
-        <<< ButtonRow(){ row in
-            row.title = "Submit"
-            row.onCellSelection{ cell , row in
-                print("tapped")
-                //self.submitTapped()
+        +++ Section()
+        <<< ButtonRow() { row in
+            row.title = "Sign Up"
+            row.onCellSelection { cell, row in
+                self.signUpAction()
             }
-            
         }
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(signUpAction))
     }
-    @objc func submitTapped(){
+    
+    @objc func signUpAction() {
         let errors = form.validate()
-        
-        guard errors.isEmpty else{
-            print(errors)
-            presentAlertWithTitle(title: "🚨", message: "Some Text Fields is Empty!!!")
+        guard errors.isEmpty else {
+            print("Error, something is missing! 😡")
+            presentAlertWithTitle(title: "Error", message: "Error, something is missing! 😡")
             return
         }
-        let userNameRow: TextRow? = form.rowBy(tag: "username")
-        let emailRow: EmailRow? = form.rowBy(tag: "email")
-        let passwordRow: PasswordRow? = form.rowBy(tag: "password")
+        
+        let userNameRow: TextRow? = form.rowBy(tag: TagUser.username.rawValue)
+        let emailRow: EmailRow? = form.rowBy(tag: TagUser.email.rawValue)
+        let passwordRow: PasswordRow? = form.rowBy(tag: TagUser.password.rawValue)
         
         let username = userNameRow?.value ?? ""
         let email = emailRow?.value ?? ""
@@ -85,23 +89,27 @@ class SignUpViewController: FormViewController {
         
         let user = User(username: username, email: email, password: password)
         
-        NetworkManager.shared.signup(user: user){ success in
-            
-            DispatchQueue.main.async{
+        NetworkManager.shared.signup(user: user) { success in
+            DispatchQueue.main.async {
                 switch success {
-                    
                 case .success(let tokenResponse):
-                    print(tokenResponse.token)
+                    print("Sign up successful. Token: \(tokenResponse.token)")
                     
+                    let ProfileVC = ProfileViewController()
+                    ProfileVC.token = tokenResponse.token
+                    self.navigationController?.pushViewController(ProfileVC, animated: true)
                 case .failure(let error):
-                    print(error)
+                    print(error.localizedDescription)
                 }
             }
         }
-         func presentAlertWithTitle(title: String, message: String) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true, completion: nil)
-        }
     }
+    
+    private func presentAlertWithTitle(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
+

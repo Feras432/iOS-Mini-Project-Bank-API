@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Eureka
+import SnapKit
 
-class WithdrawViewController: UIViewController {
+class WithdrawViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
