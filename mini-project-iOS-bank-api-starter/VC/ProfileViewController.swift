@@ -37,13 +37,9 @@ class ProfileViewController: UIViewController {
         setupUI()
         setupConstraints()
         fetchUser()
+        transactionButton()
         
         func setupUI(){
-            //            
-            //            nameLabelView.text = "\(detailsOfProfile.username)"
-            //            balanceLabelView.text = "\(detailsOfProfile.email)"
-            //            balanceLabelView.text = "\(detailsOfProfile.balance)"
-            //            
             depositButton.setTitle("Deposit", for: .normal)
             depositButton.backgroundColor = .green
             depositButton.layer.cornerRadius = 10
@@ -53,6 +49,13 @@ class ProfileViewController: UIViewController {
             withdrawalButton.backgroundColor = .red
             withdrawalButton.layer.cornerRadius = 10
         }
+        
+        
+         func transactionButton() {
+            let navigationController = UINavigationController(rootViewController: TransactionListViewController())
+            present(navigationController, animated: true, completion: nil)
+        }
+        
         
         func setupConstraints(){
             nameLabelView.snp.makeConstraints { make in
@@ -73,7 +76,7 @@ class ProfileViewController: UIViewController {
             
             
             depositButton.snp.makeConstraints { make in
-                make.bottom.equalTo(withdrawalButton.snp.top).offset(10)
+                make.centerY.equalTo(withdrawalButton.snp.centerY).offset(10)
                 make.width.equalTo(100)
                 make.height.equalTo(50)
             }
