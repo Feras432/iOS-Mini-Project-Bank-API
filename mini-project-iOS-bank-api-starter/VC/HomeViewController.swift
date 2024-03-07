@@ -49,14 +49,14 @@ class HomeViewController: UIViewController {
     }
     @objc func navigateButtonTapped() {
         let secondVC = SignInViewController()
-        secondVC.modalPresentationStyle = .fullScreen
-        self.present(secondVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(secondVC, animated: true)
+
     }
     
     @objc func navigateButton() {
         let thirdVC = SignUpViewController()
-        thirdVC.modalPresentationStyle = .fullScreen
-        self.present(thirdVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(thirdVC, animated: true)
+        
     }
     func setupConstraints(){
         signinButton.snp.makeConstraints { make in

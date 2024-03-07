@@ -59,15 +59,14 @@ class NetworkManager {
        }
    }
     
-    func fetchAccount(token: String,completion: @escaping (ProfileDetails?) -> Void){
+    func fetchAccount(token: String,completion: @escaping (Result<ProfileDetails, Error>) -> Void){
         let url = baseUrl + "account"
         let headers: HTTPHeaders = [.authorization(bearerToken: token)]
         AF.request(url, headers: headers).responseDecodable(of: ProfileDetails.self){ response in
                switch response.result{
                case .success(let account):
-                   completion(account)
+                   completion(.success(account))
                case .failure(let error):
-                   completion(nil)
                    print(error)
                }
            }
@@ -75,18 +74,19 @@ class NetworkManager {
     
     
     
-    func fetchTransactionList(token: String, amountChange: AmountChange,completion: @escaping ([TransactionList]?) -> Void){
-           AF.request(baseUrl + "account", method: .get, parameters: amountChange).responseDecodable(of: [TransactionList].self){ response in
+    func fetchTransactionList(token: String,completion: @escaping(Result<[Transaction],Error>) -> Void){
+        
+        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+        AF.request(baseUrl + "transactions", headers:headers).responseDecodable(of: [Transaction].self){ response in
                switch response.result{
                case .success(let transaction):
-                   completion(transaction)
-               case .failure(let error):
-                   completion(nil)
-                   print(error)
+                   completion(.success(transaction))
+               case .failure(let afError):
+                   completion(.failure(afError as Error))
+                   print(afError.localizedDescription)
                }
            }
        }
-    //MARK: OTHER Networking Functions
     
     
 }

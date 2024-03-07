@@ -6,8 +6,17 @@
 //
 
 import Foundation
-struct TransactionList: Codable {
-    let deposit: Double
-    let withdraw: Double
-    let balance: Double
+enum TransactionType: Codable{
+    case transfer
+    case deposit
+    case withdraw
 }
+
+struct Transaction: Codable {
+    let senderId: Int
+    let receiverId: Int
+    let amount: Double
+    let type: TransactionType
+}
+
+

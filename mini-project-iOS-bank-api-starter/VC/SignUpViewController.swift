@@ -69,6 +69,13 @@ class SignUpViewController: FormViewController {
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(signUpAction))
+        
+    }
+    
+    @objc func navigateButtonTapped() {
+        let secondVC = ProfileViewController()
+        secondVC.modalPresentationStyle = .fullScreen
+        self.present(secondVC, animated: true, completion: nil)
     }
     
     @objc func signUpAction() {

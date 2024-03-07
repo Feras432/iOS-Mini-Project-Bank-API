@@ -17,6 +17,8 @@ class DepositViewController: FormViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        depositDetUp()
+        submitTapped()
     }
     func depositDetUp(){
         form +++ Section("Deposit")
@@ -38,7 +40,7 @@ class DepositViewController: FormViewController {
             row.tag = "depositclick"
             row.onCellSelection{ cell , row in
                 print("tapped")
-               // self.submitTapped()
+                self.submitTapped()
             }
         
         }
@@ -70,19 +72,6 @@ class DepositViewController: FormViewController {
             
         }
         
-//        NetworkManager.shared.deposit(token: token ?? "", amountChange: amount, completion: (Result<TokenResponse, Error>) -> Void) { success in
-//            
-//            DispatchQueue.main.async{
-//                switch success {
-//                    
-//                case .success(let tokenResponse):
-//                    print(tokenResponse.token)
-//                    
-//                case .failure(let error):
-//                    print(error)
-//                }
-//            }
-//        }
          func presentAlertWithTitle(title: String, message: String) {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))

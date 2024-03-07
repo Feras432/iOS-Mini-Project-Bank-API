@@ -48,14 +48,17 @@ class SignInViewController: FormViewController {
                     }
                 }
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(signInAction))
-            //signInAction().addTarget(self, action: #selector(navigateButtonTapped), for: .touchUpInside)
+       
 
         }
     
 //    @objc func navigateButtonTapped() {
 //        let secondVC = ProfileViewController()
 //        secondVC.modalPresentationStyle = .fullScreen
+//        
 //        self.present(secondVC, animated: true, completion: nil)
+//        // self.navigaitoncotnroller.push
+//        
 //    }
         @objc func signInAction() {
             let errors = form.validate()
@@ -81,7 +84,7 @@ class SignInViewController: FormViewController {
                         let ProfileVC = ProfileViewController()
                         ProfileVC.token = tokenResponse.token
                         self.navigationController?.pushViewController(ProfileVC, animated: true)
-                 
+//                     self.present(/*secondVC*/, animated: true, completion: nil)
                         
                     case .failure(let error):
                         print("Sign In failed. Error: \(error.localizedDescription)")
