@@ -82,7 +82,7 @@ class SignUpViewController: FormViewController {
         let errors = form.validate()
         guard errors.isEmpty else {
             print("Error, something is missing! 😡")
-            presentAlertWithTitle(title: "Error", message: "Error, something is missing! 😡")
+            presentAlertWithTitle(title: "Error", message: "Something is missing!")
             return
         }
         

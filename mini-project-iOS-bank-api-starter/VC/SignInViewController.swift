@@ -64,7 +64,7 @@ class SignInViewController: FormViewController {
             let errors = form.validate()
             guard errors.isEmpty else {
                 print("Error, something is missing! 😡")
-                presentAlertWithTitle(title: "Error", message: "Error, something is missing! 😡")
+                presentAlertWithTitle(title: "Error", message: "Something is missing!")
                 return
             }
 
@@ -84,7 +84,6 @@ class SignInViewController: FormViewController {
                         let ProfileVC = ProfileViewController()
                         ProfileVC.token = tokenResponse.token
                         self.navigationController?.pushViewController(ProfileVC, animated: true)
-//                     self.present(/*secondVC*/, animated: true, completion: nil)
                         
                     case .failure(let error):
                         print("Sign In failed. Error: \(error.localizedDescription)")
