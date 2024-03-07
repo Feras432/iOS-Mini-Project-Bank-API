@@ -58,20 +58,34 @@ class NetworkManager {
            }
        }
    }
-//    func fetchAccount(completion: @escaping ([User]?) -> Void){
-//        let url = baseUrl + "account"
-//        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
-//        AF.request(url, method: .get, parameters: amountChange, encoder: JSONParameterEncoder.default, headers: headers).response{ response in
-//               switch response.result{
-//               case .success(let token):
-//                   completion(token)
-//               case .failure(let error):
-//                   completion(nil)
-//                   print(error)
-//               }
-//           }
-//       }
-//    
+    
+    func fetchAccount(token: String,completion: @escaping (ProfileDetails?) -> Void){
+        let url = baseUrl + "account"
+        let headers: HTTPHeaders = [.authorization(bearerToken: token)]
+        AF.request(url, headers: headers).responseDecodable(of: ProfileDetails.self){ response in
+               switch response.result{
+               case .success(let account):
+                   completion(account)
+               case .failure(let error):
+                   completion(nil)
+                   print(error)
+               }
+           }
+       }
+    
+    
+    
+    func fetchTransactionList(token: String, amountChange: AmountChange,completion: @escaping ([TransactionList]?) -> Void){
+           AF.request(baseUrl + "account", method: .get, parameters: amountChange).responseDecodable(of: [TransactionList].self){ response in
+               switch response.result{
+               case .success(let transaction):
+                   completion(transaction)
+               case .failure(let error):
+                   completion(nil)
+                   print(error)
+               }
+           }
+       }
     //MARK: OTHER Networking Functions
     
     

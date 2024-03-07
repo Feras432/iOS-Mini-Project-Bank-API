@@ -28,6 +28,8 @@
 		89215D0C2B9841CB00DACA92 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89215D0B2B9841CB00DACA92 /* ProfileViewController.swift */; };
 		C3BEFEB12B985EC400D89EB7 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEFEB02B985EC400D89EB7 /* DepositViewController.swift */; };
 		C3BEFEB32B985ED600D89EB7 /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEFEB22B985ED600D89EB7 /* WithdrawViewController.swift */; };
+		C3BEFEB52B99875D00D89EB7 /* ProfileDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEFEB42B99875D00D89EB7 /* ProfileDetails.swift */; };
+		C3BEFEB72B9989FC00D89EB7 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEFEB62B9989FC00D89EB7 /* TransactionList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		89215D0B2B9841CB00DACA92 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C3BEFEB02B985EC400D89EB7 /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
 		C3BEFEB22B985ED600D89EB7 /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
+		C3BEFEB42B99875D00D89EB7 /* ProfileDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetails.swift; sourceTree = "<group>"; };
+		C3BEFEB62B9989FC00D89EB7 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 				05CF04DA2B97A1FA00672FDF /* TokenResponse.swift */,
 				05CF04E02B97A23C00672FDF /* User.swift */,
 				05CF04DE2B97A22A00672FDF /* AmountChange.swift */,
+				C3BEFEB42B99875D00D89EB7 /* ProfileDetails.swift */,
+				C3BEFEB62B9989FC00D89EB7 /* TransactionList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +236,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3BEFEB52B99875D00D89EB7 /* ProfileDetails.swift in Sources */,
+				C3BEFEB72B9989FC00D89EB7 /* TransactionList.swift in Sources */,
 				05CF04C42B97A0AF00672FDF /* HomeViewController.swift in Sources */,
 				C3BEFEB12B985EC400D89EB7 /* DepositViewController.swift in Sources */,
 				05CF04D42B97A12600672FDF /* customView.swift in Sources */,
